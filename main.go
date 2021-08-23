@@ -6,8 +6,8 @@ import (
 )
 
 const (
-	//Id = 3333
-	ID = 3333
+	Id = 3333
+	//ID = 3333
 )
 
 func main() {
