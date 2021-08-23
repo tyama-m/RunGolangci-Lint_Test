@@ -40,9 +40,9 @@ issues:
     - linters:
       - golint
       text: "receiver name should be a reflection of its identity; don't use generic names such as \"this\" or \"self\""
-    #- linters:
-      #- golint
-      #text: "(method|func|type|const|var|func|struct)| `[a-zA-Z_0-9]` should be `[a-zA-Z_0-9]`"
+    - linters:
+      - golint
+      text: "(method|func|type|const|var|func|struct)| `[a-zA-Z_0-9]` should be `[a-zA-Z_0-9]`"
     - linters:
       - golint
       text: "exported (method|function|type|const|var|func)| `[a-zA-Z_0-9]` should have comment or be unexported"
