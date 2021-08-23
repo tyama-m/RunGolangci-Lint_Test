@@ -1,0 +1,64 @@
+linters:
+  disable-all: true
+  enable:
+    - golint
+    - govet
+    - errcheck
+    - unconvert
+    - unparam
+    - unused
+#    - gocritic
+#    - gosec
+#    - dupl
+#    - gocyclo
+#    - gofmt
+#    - misspell
+#    - goconst
+#    - errorlint
+#    - whitespace
+#    - nolintlint
+#    - prealloc
+
+linters-settings:
+  golint:
+    min_confidence: 0.8
+
+issues:
+# exclude-use-default: false
+
+  exclude-rules:
+    - linters:
+      - errcheck
+      text: "Error return value of `(seelog|log).Error` is not checked"
+    - linters:
+      - errcheck
+      text: "Error return value of `(seelog|log).Warn` is not checked"
+
+    - linters:
+      - golint
+      text: "don't use generic names such as \"this\" or \"self\""
+    - linters:
+      - golint
+      text: "receiver name should be a reflection of its identity; don't use generic names such as \"this\" or \"self\""
+    - linters:
+      - golint
+      text: "(method|func|type|const|var|func|struct)| `[a-zA-Z_0-9]` should be `[a-zA-Z_0-9]`"
+    - linters:
+      - golint
+      text: "exported (method|function|type|const|var|func)| `[a-zA-Z_0-9]` should have comment or be unexported"
+    - linters:
+      - golint
+      text: "don't use ALL_CAPS in Go names; use CamelCase"
+    - linters:
+      - golint
+      text: "don't use underscores in Go names;"
+    - linters:
+      - golint
+      text: "package comment should be of the form"
+    - linters:
+      - golint
+      text: "comment on exported (const|function|method|type|var)"
+
+    - linters:
+      - govet
+      text: "copylocks:"

@@ -1,0 +1,2 @@
+# Run Golangci-LintのGitHubActionをテストする
+テストはmain.goでIdを使用することでgolintのえらーが出る

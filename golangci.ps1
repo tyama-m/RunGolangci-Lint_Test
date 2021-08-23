@@ -1,0 +1,1 @@
+golangci-lint run --tests=False --timeout=30m --max-issues-per-linter 0 --max-same-issues 0 ./... >golangci_log.txt

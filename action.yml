@@ -1,0 +1,4 @@
+name: "Custom Ation Test"
+runs:
+    using: "node12"
+    main: "index.js"
