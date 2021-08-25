@@ -40,7 +40,7 @@ jobs:
 
     # Goモジュールをローカルキャッシュにダウンロードする
     - name: Run go mod download
-      if: steps.go-cache.outputs.cache-hit != 'true'
+      #if: steps.go-cache.outputs.cache-hit != 'true'
       run: go mod download
 
     # golangci-lint をインストールする (v1.41.1は2021/8/17現在最新）
