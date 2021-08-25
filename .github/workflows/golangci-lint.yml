@@ -33,7 +33,7 @@ jobs:
     # Go言語のセットアップ (v1.16は2021/8/17現在最新）
     # https://github.com/marketplace/actions/setup-go
     - name: Setup Go
-      if: steps.go-cache.outputs.cache-hit != 'true'
+      #if: steps.go-cache.outputs.cache-hit != 'true'
       uses: actions/setup-go@v1
       with:
         go-version: 1.16
