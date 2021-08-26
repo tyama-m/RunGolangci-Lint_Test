@@ -43,7 +43,7 @@ jobs:
   #            ${{ runner.os }}-go-
 
   lint-job:
-    #needs: setup-job
+    needs: setup-job
     runs-on: ubuntu-latest
     steps:
        # リポジトリのチェックアウト
