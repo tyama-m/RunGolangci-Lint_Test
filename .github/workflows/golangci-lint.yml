@@ -9,32 +9,32 @@ on:
       - feature-FONTELIER_V2**
 
 jobs:
-  setup-job:
-     runs-on: ubuntu-latest
-     steps:
-       # Go言語のセットアップ (v1.17は2021/8/26現在最新）
-       # https://github.com/marketplace/actions/setup-go
-       # https://github.com/actions/go-versions
-       - name: Setup Go
-         uses: actions/setup-go@v2
-         with:
-           go-version: 1.17
+  # setup-job:
+  #    runs-on: ubuntu-latest
+  #    steps:
+  #      # Go言語のセットアップ (v1.17は2021/8/26現在最新）
+  #      # https://github.com/marketplace/actions/setup-go
+  #      # https://github.com/actions/go-versions
+  #      - name: Setup Go
+  #        uses: actions/setup-go@v2
+  #        with:
+  #          go-version: 1.17
 
-       # リポジトリのチェックアウト
-       - name: Repository checkout
-         uses: actions/checkout@v2
+  #      # リポジトリのチェックアウト
+  #      - name: Repository checkout
+  #        uses: actions/checkout@v2
 
-      # キャッシュ処理
-       - name: Go Environment Cache
-         id: go-cache
-         uses: actions/cache@v2
-         with:
-           path: |
-             ~/.cache/go-build
-             ~/go/pkg/mod
-           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-           restore-keys: |
-             ${{ runner.os }}-go-
+  #     # キャッシュ処理
+  #      - name: Go Environment Cache
+  #        id: go-cache
+  #        uses: actions/cache@v2
+  #        with:
+  #          path: |
+  #            ~/.cache/go-build
+  #            ~/go/pkg/mod
+  #          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+  #          restore-keys: |
+  #            ${{ runner.os }}-go-
 
   lint-job:
     needs: setup-job
