@@ -31,16 +31,16 @@ jobs:
            sudo mv ./bin/golangci-lint $GOPATH/bin/
 
        # キャッシュ処理
-        - name: Go Environment Cache
-          id: go-cache
-          uses: actions/cache@v2
-          with:
-            path: |
-              ~/.cache/go-build
-              ~/go/pkg/mod
-            key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-            restore-keys: |
-              ${{ runner.os }}-go-
+       - name: Go Environment Cache
+         id: go-cache
+         uses: actions/cache@v2
+         with:
+           path: |
+             ~/.cache/go-build
+             ~/go/pkg/mod
+           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+           restore-keys: |
+             ${{ runner.os }}-go-
 
   lint-job:
     needs: setup-job
