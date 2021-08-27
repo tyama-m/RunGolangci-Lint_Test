@@ -55,13 +55,13 @@ jobs:
          with:
             go-version: 1.17
 
-       # Goモジュールのダウンロード
-       - name: Run go mod download
-         run: go mod download
-
        # リポジトリのチェックアウト
        - name: Repository checkout
          uses: actions/checkout@v2
+
+       # Goモジュールのダウンロード
+       - name: Run go mod download
+         run: go mod download
 
        # golangci-lint をインストールする (v1.41.1は2021/8/17現在最新）
        - name: Install golangci-lint
