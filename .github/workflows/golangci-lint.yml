@@ -10,7 +10,15 @@ on:
 
 jobs:
   lint-job:
-    runs-on: ubuntu-latest
+
+    # 静的解析ではOSに依存することないので、ubuntu-latest のみとする。
+    # 将来的にユニットテストなどを実施する場合には拡張が必要。
+    strategy:
+      matrix:
+        #os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest]
+
+    runs-on: ${{ matrix.os }}
 
     steps:
        # リポジトリのチェックアウト
