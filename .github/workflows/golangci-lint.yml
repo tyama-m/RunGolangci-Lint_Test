@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         #os: [ubuntu-latest, windows-latest, macos-latest]
-        os: [ubuntu-latest]
+        os: [windows-latest]
 
     runs-on: ${{ matrix.os }}
 
@@ -24,6 +24,11 @@ jobs:
        # リポジトリのチェックアウト
        - name: Repository checkout
          uses: actions/checkout@v2
+
+       # gitで長いファイル名を許可する（Windows対応）
+       - name: git sysytem setting
+         if: ${{ runner.os }}=='windows-latest'
+         run: git config --system core.longpaths true
 
        # キャッシュ処理
        - name: Go Environment Cache
