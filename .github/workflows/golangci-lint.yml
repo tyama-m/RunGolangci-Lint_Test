@@ -60,6 +60,10 @@ jobs:
        #- name: dir
        #  run: dir $(go env GOPATH)
 
+       # SQLite のインストール
+       - name: Restore NuGets
+         run: nuget restore https://github.com/praeclarum/sqlite-net/SQLite.sln
+
        # golangci-lint をインストールする (v1.41.1は2021/8/17現在最新）
        - name: Install golangci-lint
          run: |
