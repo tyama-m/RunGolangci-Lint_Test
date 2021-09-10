@@ -61,17 +61,18 @@ jobs:
        #  run: dir $(go env GOPATH)
 
        # SQLite のインストール
-       - name: Restore NuGets
+       #- name: Restore NuGets
          #run: nuget restore https://github.com/praeclarum/sqlite-net/blob/master/SQLite.sln
          #run: curl -sSfL https://github.com/praeclarum/sqlite-net/SQLite.sln
-         run : ./DB.Browser.for.SQLite-3.12.2-win64.msi  /quiet
+         #run : ./DB.Browser.for.SQLite-3.12.2-win64.msi  /quiet
 
        # golangci-lint をインストールする (v1.41.1は2021/8/17現在最新）
        - name: Install golangci-lint
          run: |
-           #curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.42.0
-           curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.42.0
+           curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.42.1
+           #curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.42.0
 
+golangci-lint --version
        # 静的解析（golangci-lint）を実施する
        #- name: Run golangci-lint
        #  run: golangci-lint run --tests=False --timeout=30m --max-issues-per-linter 0 --max-same-issues 0 --out-format=colored-line-number ./...
