@@ -73,5 +73,5 @@ jobs:
            #curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.42.0
 
        # 静的解析（golangci-lint）を実施する
-       #- name: Run golangci-lint
-       #  run: golangci-lint run --tests=False --timeout=30m --max-issues-per-linter 0 --max-same-issues 0 --out-format=colored-line-number ./...
+       - name: Run golangci-lint
+         run: golangci-lint run --tests=False --timeout=30m --max-issues-per-linter 0 --max-same-issues 0 --out-format=colored-line-number ./...
