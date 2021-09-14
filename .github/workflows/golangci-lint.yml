@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         #os: [ubuntu-latest, windows-latest, macos-latest]
-        os: [windows-latest]
+        os: [windows-2016]
 
     runs-on: ${{ matrix.os }}
 
@@ -27,7 +27,7 @@ jobs:
 
        # gitで長いファイル名を許可する（Windows対応）
        - name: git sysytem setting
-         if: matrix.os == 'windows-latest'
+         if: matrix.os == 'windows-2016'
          run: git config --system core.longpaths true
 
        # キャッシュ処理
