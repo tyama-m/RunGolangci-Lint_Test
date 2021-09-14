@@ -66,7 +66,8 @@ jobs:
          #run : DB.Browser.for.SQLite-3.12.2-win64.msi /quiet
          #run: go get github.com/muyuballs/go-sqlcipher
          #run: go install github.com/muyuballs/go-sqlcipher
-         run: go get github.com/xeodou/go-sqlcipher
+         #run: go get github.com/xeodou/go-sqlcipher
+         run: go install github.com/xeodou/go-sqlcipher
 
        # golangci-lint をインストールする (v1.41.1は2021/8/17現在最新）
        - name: Install golangci-lint
