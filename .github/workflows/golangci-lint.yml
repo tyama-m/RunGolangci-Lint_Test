@@ -56,9 +56,6 @@ jobs:
          #if: steps.go-cache.outputs.cache-hit != 'true'
          #run: go mod download
 
-       - name: dir
-         run: dir $(go env GOPATH)
-
        # SQLite のインストール
        #- name: Restore NuGets
          #run: nuget restore https://github.com/praeclarum/sqlite-net/blob/master/SQLite.sln
@@ -72,9 +69,12 @@ jobs:
        # golangci-lint をインストールする (v1.41.1は2021/8/17現在最新）
        - name: Install golangci-lint
          run: |
-           #curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b C:/Users/runneradmin/go/bin v1.42.0
+           curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b C:/Users/runneradmin/go/bin v1.42.0
            #curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.42.0
-           curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin 'latest'
+           #curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin 'latest'
+
+       - name: dir
+         run: dir $(go env GOPATH)
 
        # 静的解析（golangci-lint）を実施する
        - name: Run golangci-lint
