@@ -6,10 +6,7 @@ run:
     - .git
     - .github
     - .vscode
-    - dmMac
-    - dmWin
-    - dmCommon/dmservice/agent
-    - dmCommon/dmservice/cmd
+    - sqlite3
 
 linters:
   disable-all: true
