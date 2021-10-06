@@ -44,10 +44,10 @@ jobs:
        # Go言語のセットアップ (v1.17は2021/8/26現在最新）
        # https://github.com/marketplace/actions/setup-go
        # https://github.com/actions/go-versions
-       #- name: Setup Go
-         #if: steps.go-cache.outputs.cache-hit != 'true'
-         #uses: actions/setup-go@v2
-         #with:
+       - name: Setup Go
+         if: steps.go-cache.outputs.cache-hit != 'true'
+         uses: actions/setup-go@v2
+         with:
             #go-version: 1.17
 
        # Goモジュールのダウンロード
