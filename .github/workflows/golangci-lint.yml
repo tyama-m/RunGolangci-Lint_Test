@@ -72,8 +72,8 @@ jobs:
            #curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.42.0
            #curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin 'latest'
 
-       #- name: dir
-         #run: dir C:/Users/runneradmin/go/bin
+       - name: dir
+         run: dir
 
        # 静的解析（golangci-lint）を実施する
        - name: Run golangci-lint
