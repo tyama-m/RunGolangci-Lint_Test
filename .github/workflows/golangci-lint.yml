@@ -1,7 +1,7 @@
 # MORISAWA Desktop Managerのリポジトリへのプッシュをトリガーとして
 # Goファイルの静的解析をGithubActionで実行する。
 # 対象ブランチは、先頭が[feature-FONTELIER_V2]で始まるブランチとする。
-name: golangci-lint
+name: golangci-lint_Test
 
 on:
   push:
