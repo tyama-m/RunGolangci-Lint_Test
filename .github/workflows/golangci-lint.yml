@@ -14,8 +14,8 @@ jobs:
     # 将来的にユニットテストなどを実施する場合には拡張が必要。
     strategy:
       matrix:
-        #os: [ubuntu-latest, windows-latest, macos-latest]
-        os: [self-hosted]
+        #os: [ubuntu-latest, windows-latest, macos-latest, self-hosted]
+        os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
 
@@ -25,21 +25,9 @@ jobs:
          uses: actions/checkout@v2
 
        # gitで長いファイル名を許可する（Windows対応）
-       - name: git sysytem setting
+       #- name: git sysytem setting
          #if: matrix.os == 'windows-latest'
-         run: git config --system core.longpaths true
-
-       # キャッシュ処理
-       #- name: Go Environment Cache
-         #id: go-cache
-         #uses: actions/cache@v2
-         #with:
-           #path: |
-             #~/.cache/go-build
-             #~/go/pkg/mod
-           #key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-           #restore-keys: |
-             #${{ runner.os }}-go-
+         #run: git config --system core.longpaths true
 
        # Go言語のセットアップ (v1.17は2021/8/26現在最新）
        # https://github.com/marketplace/actions/setup-go
@@ -73,6 +61,9 @@ jobs:
            #curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin 'latest'
 
        # 静的解析（golangci-lint）を実施する
-       - name: Run golangci-lint
+       #- name: Run golangci-lint
          #run: golangci-lint run --tests=False --timeout=30m --max-issues-per-linter 0 --max-same-issues 0 --out-format=colored-line-number ./...
-         run: golangci-lint run -c .golangci_config.yml --tests=False --timeout=30m --max-issues-per-linter 0 --max-same-issues 0 --out-format=colored-line-number ./...
+         #run: golangci-lint run -c .golangci_config.yml --tests=False --timeout=30m --max-issues-per-linter 0 --max-same-issues 0 --out-format=colored-line-number ./...
+
+      - name: Run golangci-lint
+        uses: ./.github/actions/golang
