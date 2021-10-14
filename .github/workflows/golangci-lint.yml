@@ -66,4 +66,4 @@ jobs:
          #run: golangci-lint run -c .golangci_config.yml --tests=False --timeout=30m --max-issues-per-linter 0 --max-same-issues 0 --out-format=colored-line-number ./...
 
        - name: Run golangci-lint
-         uses: ./.github/actions/golang-test
+         uses: ./.github/actions/golang
