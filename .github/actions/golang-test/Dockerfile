@@ -9,7 +9,7 @@ LABEL "name"="Golang workflow" \
 
 ENV LINT_VERSION="v1.42.0"
 
-COPY .github/actions/golang-test/entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 
 RUN curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(go env GOPATH)/bin ${LINT_VERSION} \
   && chmod +x /entrypoint.sh
