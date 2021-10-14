@@ -7,9 +7,7 @@ go mod tidy
 go mod verify
 
 if [[ "$1" == "lint" ]]; then
-    echo "############################"
-    echo "# Running GolangCI-Lint... #"
-    echo "############################"
+    echo " Running GolangCI-Lint..."
     golangci-lint --version
     echo
     golangci-lint run -c .golangci_config.yml --tests=False --timeout=30m --max-issues-per-linter 0 --max-same-issues 0 --out-format=colored-line-number ./...
