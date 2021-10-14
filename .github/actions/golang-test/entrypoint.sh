@@ -1,5 +1,4 @@
-﻿# /actions/golang-test/entrypoint.sh
-#!/bin/bash
+﻿#!/bin/bash
 
 APP_DIR="/go/src/github.com/${GITHUB_REPOSITORY}/"
 
