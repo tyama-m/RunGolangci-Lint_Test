@@ -15,8 +15,8 @@ func main() {
 	fmt.Printf("Golangci-lint test(%d)", Id)
 	//fmt.Printf("Golangci-lint test(%d)", ID)
 
-	//test()
-	_ = test()
+	test()
+	//_ = test()
 }
 
 func test() error {
