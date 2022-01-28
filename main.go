@@ -1,6 +1,7 @@
 package main
 
 import (
+	"RunGolangci-Lint_Test/platform"
 	"errors"
 	"fmt"
 )
@@ -14,6 +15,7 @@ func main() {
 
 	fmt.Printf("Golangci-lint test(%d)", Id)
 	//fmt.Printf("Golangci-lint test(%d)", ID)
+	fmt.Printf("%s", platform.GetPlatform())
 
 	test()
 	//_ = test()
