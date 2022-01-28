@@ -17,8 +17,8 @@ func main() {
 	//fmt.Printf("Golangci-lint test(%d)", ID)
 	fmt.Printf("%s", platform.GetPlatform())
 
-	test()
-	//_ = test()
+	//test()
+	_ = test()
 }
 
 func test() error {
