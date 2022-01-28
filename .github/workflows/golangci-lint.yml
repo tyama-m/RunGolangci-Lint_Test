@@ -69,7 +69,7 @@ jobs:
          #uses: ./.github/actions/golang-test
 
       # 静的解析（golangci-lint）を実施する（アクションを利用する場合）
-      - name: Run golangci-lint
-        uses: golangci/golangci-lint-action@v2
-        with:
+       - name: Run golangci-lint
+         uses: golangci/golangci-lint-action@v2
+         with:
            version: latest
