@@ -1,8 +1,9 @@
 package main
 
 import (
-	"errors"
 	"fmt"
+
+	"golangci-lint.com/m/pkg"
 )
 
 const (
@@ -16,10 +17,10 @@ func main() {
 	//fmt.Printf("Golangci-lint test(%d)", ID)
 
 	//test()
-	_ = test()
+	_ = pkg.Test()
 }
 
-func test() error {
+// func test() error {
 
-	return errors.New("test return")
-}
+// 	return errors.New("test return")
+// }
