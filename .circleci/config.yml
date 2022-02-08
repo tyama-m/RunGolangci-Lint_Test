@@ -18,14 +18,21 @@ jobs:
 #      - image: cimg/base:stable
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
-    executor: win/default
+    executor:
+      name: win/default
+      size: small
 
     steps:
-      - checkout
+      - run:
+          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.44.0
+
+      - run: golangci-lint --version
+
+      # - checkout
       # - run:
       #     name: "Say hello"
       #     command: "echo Hello, World!"
-      - run: go build main.go
+      # - run: go build main.go
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
