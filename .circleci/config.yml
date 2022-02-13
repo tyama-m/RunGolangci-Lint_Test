@@ -26,13 +26,21 @@ jobs:
       #- run: go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.44.0
       #- run: golangci-lint --version
 
-      - run: sqlite3 --version
+      #- run: sqlite3 --version
 
       # - checkout
       # - run:
       #     name: "Say hello"
       #     command: "echo Hello, World!"
       # - run: go build main.go
+
+      - run:
+          name: "Docker WiXtoolset"
+          shell: powershell.exe
+          command: |
+             docker pull zigzalgo/wixtoolset
+
+     - run: docker ps 
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
