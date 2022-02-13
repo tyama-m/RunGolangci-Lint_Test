@@ -38,8 +38,8 @@ jobs:
           name: "Docker WiXtoolset"
           shell: powershell.exe
           command: |
-            # docker pull zigzalgo/wixtoolset
-            docker info 
+            docker run zigzalgo/wixtoolset
+            #docker info 
 
       #- run: docker ps 
 
