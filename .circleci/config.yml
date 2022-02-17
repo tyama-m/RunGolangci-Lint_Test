@@ -40,7 +40,7 @@ jobs:
           command: |
             #docker run zigzalgo/wixtoolset
             #docker info
-            docker run golang:latest 
+            docker pull golang:latest 
 
       - run: golangci-lint --version
 
