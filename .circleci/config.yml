@@ -40,9 +40,9 @@ jobs:
           command: |
             #docker run zigzalgo/wixtoolset
             #docker info
-            docker run hello-world:nanoserver-1809 
+            docker run golang:latest 
 
-      #- run: docker ps 
+      - run: golangci-lint --version
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
