@@ -29,18 +29,16 @@ jobs:
       #- run: sqlite3 --version
 
       # - checkout
+
       # - run:
-      #     name: "Say hello"
-      #     command: "echo Hello, World!"
-      # - run: go build main.go
+      #      name: "Go build test"
+      #      command: go build main.go
 
       - run:
           name: "Docker Golangci-lint"
           shell: powershell.exe
           command: |
-            #docker run zigzalgo/wixtoolset
-            #docker info
-            docker run -d golang:latest 
+            docker run golang:latest
 
       - run: golangci-lint --version
 
