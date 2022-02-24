@@ -49,7 +49,7 @@ jobs:
        - run:
           name: "golangci-lint version."
           shell: powershell.exe
-          command: "C:/Program Files/Go/bin/golangci-lint" --version
+          command: C:/Program' Files/Go/bin/golangci-lint --version
           #command: $env:GOPATH
 
 # Invoke jobs via workflows
