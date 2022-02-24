@@ -42,11 +42,12 @@ jobs:
 
        - run:
           name: "Golangci-lint install."
-          shell: powershell.exe
-          command: |
-            curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.44.2
+          shell: Bash
+          command: curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.44.2
 
-       - run: golangci-lint --version
+       - run:
+          name:
+          command: golangci-lint --version
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
