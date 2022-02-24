@@ -48,7 +48,8 @@ jobs:
 
        - run:
           name: "golangci-lint version."
-          command: golangci-lint --version
+          #command: golangci-lint --version
+          command: path
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
