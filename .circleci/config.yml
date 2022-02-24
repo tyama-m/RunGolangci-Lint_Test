@@ -50,7 +50,7 @@ jobs:
           name: "golangci-lint version."
           shell: powershell.exe
           #command: golangci-lint --version
-          command: $env:PATH
+          #command: $env:GOPATH
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
