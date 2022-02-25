@@ -45,11 +45,12 @@ jobs:
           shell: bash.exe
           #command: curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.44.2
           command: curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "C:/Program Files/Go/bin" v1.44.2
-
-       - run:
-          name: "golangci-lint version."
-          shell: powershell.exe
           command: golangci-lint --version
+
+#       - run:
+#          name: "golangci-lint version."
+#          shell: powershell.exe
+#          command: golangci-lint --version
 
 workflows:
   go-build-workflow:
