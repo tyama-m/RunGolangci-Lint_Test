@@ -34,11 +34,11 @@ jobs:
       #      name: "Go build test"
       #      command: go build main.go
 
-      # - run:
-      #     name: "Docker run image."
-      #     shell: powershell.exe
-      #     command: |
-      #      docker run tyama1224/mdm-develop-image:0.2
+       - run:
+           name: "Docker run image."
+           shell: powershell.exe
+           command: |
+            docker run tyama1224/mdm-develop-image:0.2
 
        - run:
           name: "Golangci-lint install."
