@@ -43,7 +43,7 @@ jobs:
        - run:
           name: "Set GOPATH."
           shell: cmd.exe
-          command: setx /M GOPATH="C:/Program Files/Go"
+          command: setx /M GOPATH "C:/Program Files/Go"
 
        - run:
           name: "view GOPATH."
