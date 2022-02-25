@@ -41,6 +41,16 @@ jobs:
             docker run tyama1224/mdm-develop-image:0.2
 
        - run:
+          name: "Set GOPATH."
+          shell: cmd.exe
+          command: set GOPATH="C:/Program Files/Go"
+
+       - run:
+          name: "view GOPATH."
+          shell: powershell.exe
+          command: $env:GOPATH
+
+       - run:
           name: "Golangci-lint install."
           shell: bash.exe
           command: curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.44.2
@@ -49,11 +59,7 @@ jobs:
           name: "golangci-lint version."
           shell: powershell.exe
           command: golangci-lint --version
-          #command: $env:GOPATH
-          #command: curl --help
 
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   go-build-workflow:
     jobs:
