@@ -50,7 +50,7 @@ jobs:
           name: "golangci-lint version."
           shell: powershell.exe
           #command: golangci-lint --version
-          command: env:PATH
+          command: $env:PATH
           #command: curl --help
 
 # Invoke jobs via workflows
