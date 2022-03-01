@@ -39,7 +39,7 @@ jobs:
            shell: powershell.exe
            command: |
             #docker run --rm --mount type=bind,src=D:/GitHub/morisawa-desktop-manager,dst=/src tyama1224/mdm-develop-image:0.2
-            docker run -it golang
+            docker run tyama1224/golang-develop-image:0.1
 
        - run:
           name: "Golangci-lint install."
