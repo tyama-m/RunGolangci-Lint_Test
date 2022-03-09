@@ -1,7 +1,11 @@
 # MORISAWA Desktop Managerのリポジトリへのプッシュをトリガーとして
 # Goファイルの静的解析をGithubActionで実行する。
-# 対象ブランチは、先頭が[feature-FONTELIER_V2]で始まるブランチとする。
-name: golangci-lint_Test
+# 運用ブランチは[develop]とする。
+# 2021/11/02 : AzureをHOSTとして使用する。
+# 2021/11/12 : 警告が発生した場合にSlackに通知する。
+# 2022/02/01：AWSをHOST Runner とする。
+
+name: golangci-lint
 
 on:
   push:
@@ -9,13 +13,17 @@ on:
       - feature-FONTELIER_V2**
 
 jobs:
-  lint:
-    # 静的解析ではOSに依存することないので、ubuntu-latest のみとする。
-    # 将来的にユニットテストなどを実施する場合には拡張が必要。
+ # 静的解析の実行JOB
+  lint-job:
+
+    # mdmserviceの静的解析ではOSに依存する部分があり、windowsとmac環境の
+    # それぞれで実行する必要がある。
+    # 将来的にAWSへの移行を検討し、テスト段階ではAzure（windows）環境のみ
+    # での運用とする。
     strategy:
       matrix:
-        #os: [ubuntu-latest, windows-latest, macos-latest, self-hosted]
-        os: [ubuntu-latest]
+        #os: [ubuntu-latest, windows-latest, macos-latest, self-hosted, Azure, AWS]
+        os: [AWS]
 
     runs-on: ${{ matrix.os }}
 
@@ -24,52 +32,6 @@ jobs:
        - name: Repository checkout
          uses: actions/checkout@v2
 
-       # gitで長いファイル名を許可する（Windows対応）
-       #- name: git sysytem setting
-         #if: matrix.os == 'windows-latest'
-         #run: git config --system core.longpaths true
-
-       # Go言語のセットアップ (v1.17は2021/8/26現在最新）
-       # https://github.com/marketplace/actions/setup-go
-       # https://github.com/actions/go-versions
-       #- name: Setup Go
-         #if: steps.go-cache.outputs.cache-hit != 'true'
-         #uses: actions/setup-go@v2
-         #with:
-            #go-version: 1.17
-
-       # Goモジュールのダウンロード
-       #- name: Run go mod download
-         #if: steps.go-cache.outputs.cache-hit != 'true'
-         #run: go mod download
-
-       # SQLite のインストール
-       #- name: Restore NuGets
-         #run: nuget restore https://github.com/praeclarum/sqlite-net/blob/master/SQLite.sln
-         #run: curl -sSfL https://github.com/praeclarum/sqlite-net/SQLite.sln
-         #run : DB.Browser.for.SQLite-3.12.2-win64.msi /quiet
-         #run: go get github.com/muyuballs/go-sqlcipher
-         #run: go install github.com/muyuballs/go-sqlcipher
-         #run: go get github.com/xeodou/go-sqlcipher
-         #run: go install github.com/xeodou/go-sqlcipher
-
-       # golangci-lint をインストールする (v1.41.1は2021/8/17現在最新）
-       #- name: Install golangci-lint
-         #run: |
-           #curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b C:/Users/runneradmin/go/bin v1.42.0
-           #curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.42.0
-           #curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin 'latest'
-
        # 静的解析（golangci-lint）を実施する
-       #- name: Run golangci-lint
-         #run: golangci-lint run --tests=False --timeout=30m --max-issues-per-linter 0 --max-same-issues 0 --out-format=colored-line-number ./...
-         #run: golangci-lint run -c .golangci_config.yml --tests=False --timeout=30m --max-issues-per-linter 0 --max-same-issues 0 --out-format=colored-line-number ./...
-
-       #- name: Run golangci-lint
-         #uses: ./.github/actions/golang-test
-
-      # 静的解析（golangci-lint）を実施する（アクションを利用する場合）
        - name: Run golangci-lint
-         uses: golangci/golangci-lint-action@v2
-         with:
-           version: latest
+         run: golangci-lint run -c .golangci_config.yml --tests=False --timeout=30m --max-issues-per-linter 0 --max-same-issues 0 --out-format=colored-line-number ./dmCommon/...
