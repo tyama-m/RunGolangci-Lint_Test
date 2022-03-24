@@ -28,29 +28,12 @@ jobs:
 
       #- run: sqlite3 --version
 
-      # - checkout
+      - checkout
 
-      # - run:
-      #      name: "Go build test"
-      #      command: go build main.go
-
-       - run:
-           name: "Docker run image."
+      - run:
+           name: "dir test."
            shell: powershell.exe
-           command: |
-            #docker run --rm --mount type=bind,src=D:/GitHub/morisawa-desktop-manager,dst=/src tyama1224/mdm-develop-image:0.2
-            docker run tyama1224/golang-develop-image:0.1
-
-       - run:
-          name: "Golangci-lint install."
-          shell: bash.exe
-          #command: curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.44.2
-          command: curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "C:/Program Files/Go/bin" v1.44.2
-
-       - run:
-          name: "golangci-lint version."
-          shell: powershell.exe
-          command: golangci-lint --version
+           command: dir c:/Users/circleci/project
 
 workflows:
   go-build-workflow:
