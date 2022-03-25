@@ -10,6 +10,7 @@ name: golangci-lint
 on:
   push:
     branches:
+      - master
       - feature-FONTELIER_V2**
 
 jobs:
@@ -18,8 +19,6 @@ jobs:
 
     # mdmserviceの静的解析ではOSに依存する部分があり、windowsとmac環境の
     # それぞれで実行する必要がある。
-    # 将来的にAWSへの移行を検討し、テスト段階ではAzure（windows）環境のみ
-    # での運用とする。
     strategy:
       matrix:
         #os: [ubuntu-latest, windows-latest, macos-latest, self-hosted, Azure, AWS]
