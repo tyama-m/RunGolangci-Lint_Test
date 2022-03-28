@@ -1,3 +1,3 @@
-module golangci-lint.com/m
+module RunGolangci-Lint_Test
 
-go 1.14
+go 1.17

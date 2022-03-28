@@ -1,27 +1,26 @@
+# golangci-lintのバージョンは、v1.37.0以上でなければならない。
+# golangci-lintを v1.40.1 にアップデートするコマンド例
+# curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b <GOPATH>/bin v1.40.1
+run:
+  skip-dirs:
+    - .git
+    - .github
+    - .vscode
+
 linters:
   disable-all: true
   enable:
-    - golint
+#   - golint delete 2021/6/8 非推奨に変更されたため削除する
     - govet
     - errcheck
     - unconvert
     - unparam
     - unused
-#    - gocritic
-#    - gosec
-#    - dupl
-#    - gocyclo
-#    - gofmt
-#    - misspell
-#    - goconst
-#    - errorlint
-#    - whitespace
-#    - nolintlint
-#    - prealloc
+    - revive
 
 linters-settings:
-  golint:
-    min_confidence: 0.8
+#  golint:  delete 2021/6/8 非推奨に変更されたため削除する
+#    min_confidence: 0.8
 
 issues:
 # exclude-use-default: false
@@ -35,28 +34,28 @@ issues:
       text: "Error return value of `(seelog|log).Warn` is not checked"
 
     - linters:
-      - golint
+      - revive
       text: "don't use generic names such as \"this\" or \"self\""
     - linters:
-      - golint
+      - revive
       text: "receiver name should be a reflection of its identity; don't use generic names such as \"this\" or \"self\""
     - linters:
-      - golint
+      - revive
       text: "(method|func|type|const|var|func|struct)| `[a-zA-Z_0-9]` should be `[a-zA-Z_0-9]`"
     - linters:
-      - golint
+      - revive
       text: "exported (method|function|type|const|var|func)| `[a-zA-Z_0-9]` should have comment or be unexported"
     - linters:
-      - golint
+      - revive
       text: "don't use ALL_CAPS in Go names; use CamelCase"
     - linters:
-      - golint
+      - revive
       text: "don't use underscores in Go names;"
     - linters:
-      - golint
+      - revive
       text: "package comment should be of the form"
     - linters:
-      - golint
+      - revive
       text: "comment on exported (const|function|method|type|var)"
 
     - linters:
